@@ -48,7 +48,7 @@ public class Ex01Repository {
 	 */
 	public Team showDetail(Integer id) {
 		
-		String sql = "SELECT * FORM teams WHERE id = :id;";
+		String sql = "SELECT * FROM teams WHERE id = :id;";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		
