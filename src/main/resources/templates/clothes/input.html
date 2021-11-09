@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タイトル</title>
+</head>
+<body>
+	<h2>衣類検索</h2>
+	<form th:action="@{/clothes/result}" method="post">
+	<table>
+		<tr>
+			<td>
+				<input id="maleField" type="radio" name="gender" value="0" checked>
+				<label for="maleField">Man</label><br>
+				<input id="femaleField" type="radio" name="gender" value="1">
+				<label for="femaleField">Woman</label>
+			</td>
+			<td>
+			<select name="color" style="width:70px">
+				<option value="赤">赤
+				<option value="青">青
+				<option value="白">白
+				<option value="黄">黄
+			</select>
+			</td>
+		
+		</tr>
+	</table>
+	<button>検索</button>
+	</form>
+	
+	<br>
+	<div th:if="${non != null}" th:text="${non}"></div>
+	<div th:unless="${non != null}" th:text="${non}"></div>
+	
+	<table th:each="list : ${clothesList}" border="1">
+		<tr>
+			<td>ジャンル</td>
+			<td th:text="${list.genre}"></td>
+		</tr>
+		<tr>
+			<td>サイズ</td>
+			<td th:text="${list.size}"></td>
+		</tr>
+		<tr>
+			<td>価格</td>
+			<td th:text="${#numbers.formatInteger(list.price,4,'COMMA')}"></td>
+		</tr>
+	</table>
+</body>
+</html>
